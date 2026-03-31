@@ -1,37 +1,53 @@
-:root {
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-h1, h2, h3, h4 {
-    margin: 0;
-}
-
-p {
-    margin: 0;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-@font-face {
-    font-family: 'MyFont';
-    src: url('font.woff2') format('woff2');
-    font-display: swap;
-}
+/* Original CSS for Sidebar - Restored Design */
 
 .sidebar {
-    background-color: var(--primary-color);
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    transition: width 0.3s ease;
 }
 
-.sidebar__img {
-    /* filter: blur(5px); */
+.sidebar.active {
+    width: 60px;
 }
+
+.sidebar h2 {
+    color: #fff;
+    padding: 20px;
+    margin: 0;
+}
+
+.sidebar a {
+    display: block;
+    color: #fff;
+    padding: 15px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+.dark-mode .sidebar {
+    background-color: #222;
+}
+
+.dark-mode .sidebar a {
+    color: #eee;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.sidebar.show {
+    animation: slide-in 0.5s forwards;
+}
+
+/* Add more styles as needed for animations and dark mode functionality */
