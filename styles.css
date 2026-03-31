@@ -1,53 +1,314 @@
-/* Original CSS for Sidebar - Restored Design */
-
-.sidebar {
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    transition: width 0.3s ease;
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    src: url(fonts2/MaterialSymbolsOutlined[FILL\,GRAD\,opsz\,wght].ttf)
+    format('opentype');
 }
 
-.sidebar.active {
-    width: 60px;
+@font-face {
+    font-family: 'Material Symbols Rounded';
+    src: url(MaterialSymbolsRounded.woff2)
+    format('woff2');
 }
 
-.sidebar h2 {
-    color: #fff;
-    padding: 20px;
+.icon-outlined{
+    font-family: 'Material Symbols Outlined';
+    font-size: 24px;
+
+    font-variation-settings:
+    'wght'150,
+    'FILL'0;
+
+    transition: transform 0.2s ease;
+}
+
+body{
+    --bg-color: color-mix(in srgb, #f62 70%, #fff);
+    --sidebar-color: #fff;
+    --dark-color: #f62;
+    --text-color: #444;
+}
+
+body, div, ul, li, a, h1, h2, h3, h4{
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.sidebar a {
-    display: block;
-    color: #fff;
-    padding: 15px;
+
+label, .sidebar__nav span{
+    user-select: none;
+}
+
+body{
+    background-color: var(--bg-color);
+    font-family: sans-serif;
+}
+
+/*SIDEBAR STYLES*/
+
+.sidebar{
+    background-color: var(--sidebar-color);
+    position: fixed;
+    height: 100dvh;
+    width: clamp(220px, 20vw, 300px);
+    font-size: clamp(1rem, 2.2vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 0 30px 6px;
+}
+
+.sidebar__nav{
+    display: flex;
+    flex: 1;
+}
+
+.sidebar__nav ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.sidebar__item{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: .9rem;
+    padding-right: 6px;
+    color: var(--bg-color);
+    border-radius: 36px 0 0 36px;
+    position: relative;
+}
+
+.sidebar__item span{
+    padding: 12px;
+    font-size: 2rem;
+}
+
+.sidebar__item a{
+    color: inherit;
     text-decoration: none;
-    transition: background-color 0.3s ease;
 }
 
-.sidebar a:hover {
-    background-color: #575757;
+.sidebar__item:hover{
+    background-color: var(--bg-color);
+    color: var(--sidebar-color)
 }
 
-.dark-mode .sidebar {
-    background-color: #222;
+.sidebar__item:hover::before,
+.sidebar__item:hover::after{
+content: '';
+background-color: transparent;
+position: absolute;
+right: 0;
+width: 18px;
+height: 18px;
 }
 
-.dark-mode .sidebar a {
-    color: #eee;
+.sidebar__item::before{
+    top: -18px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 4px 4px 0 4px var(--bg-color);
 }
 
-@keyframes slide-in {
-    0% {
-        transform: translateX(-100%);
+.sidebar__item:hover::after{
+    bottom: -18px;
+    border-top-right-radius: 25px;
+    box-shadow: 4px -4px 0 4px var(--bg-color);
+}
+
+/*---Modificacion para el caso de Dark Mode*/
+.colors-change:hover::after{
+    bottom: -18px;
+    border-top-right-radius: 25px;
+    box-shadow: 4px -4px 0 4px transparent;
+}
+
+.colors-change:hover::before{
+    top: -18px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 4px 4px 0 4px transparent;
+}
+/*SIDEBAR PICTURE STYLES*/
+
+.sidebar__picture{
+    margin-left: 1.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.sidebar__img {
+    width: clamp(4rem, 75%, 20rem);
+    margin: auto;
+    opacity: .82;
+    filter: hue-rotate(-22deg);
+}
+
+.img-white{
+    display: none;
+}
+
+/*SIDEBAR PROFILE MENU STYLES*/
+
+.sidebar__profile{
+    margin-top: auto;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
+.sidebar__profile img{
+    border-radius: 50%;
+    width: 2rem;
+}
+
+.profile-item .profile-option{
+    font-size: .8rem;
+    padding: 0 12px 0 9px;
+    color: inherit;
+}
+
+.profile-item{
+    margin: 12px;
+    color: var(--text-color);
+    width: fit-content;
+}
+
+.profile-item:hover{
+    border-radius: 25px;
+    color: var(--sidebar-color);
+}
+
+.profile-item:hover img{
+    opacity: .7;
+}
+
+.profile-item::before, .profile-item::after{
+    display: none;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+.sidebar__form{
+    position: absolute;
+    z-index: 20;
+    right: -1rem;
+}
+
+.sidebar__form .open-button{
+    display: none;
+    background-color: var(--sidebar-color);
+    color: var(--bg-color)
+}
+
+.sidebar label{
+    position: relative;
+    background-color: var(--bg-color);
+    color: var(--sidebar-color);
+    font-size: 2rem;
+    border-radius: 50%;
+    padding: .4rem;
+}
+
+.sidebar label::before,
+.sidebar label::after{
+    content: '';
+    background-color: transparent;
+    position: absolute;
+    width: 10px;
+    height: 25px;
+}
+
+.sidebar label::before{
+    top: -25px;
+    left: 19px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 4px 4px 0 4px var(--bg-color);
+}
+
+.sidebar label::after{
+    bottom: -25px;
+    left: 19px;
+    border-top-right-radius: 25px;
+    box-shadow: 4px -4px 0 4px var(--bg-color);
+}
+
+input[type="checkbox"]:checked ~ label{
+    color: var(--bg-color);
+    background-color: var(--sidebar-color);
+}
+
+input[type="checkbox"]:checked ~ label::before,
+input[type="checkbox"]:checked ~ label::after{
+    display: none;
+}
+
+.sidebar:has(input[type="checkbox"]:checked){
+    width: fit-content;
+}
+
+.sidebar:has(input[type="checkbox"]:checked) .sidebar__form label{
+    display: none;
+}
+
+.sidebar:has(input[type="checkbox"]:checked) .sidebar__form .open-button{
+    display: block;
+    color: var(--sidebar-color);
+    background-color: var(--bg-color);
+}
+
+.sidebar:has(input[type="checkbox"]:checked) .sidebar__form{
+    top: 4.8rem;
+    width: fit-content;
+}
+
+.sidebar:has(input[type="checkbox"]:checked) .sidebar__picture img{
+    max-width: 3.4rem;
+}
+
+.sidebar:has(input[type="checkbox"]:checked) .sidebar__picture{
+    margin-left: 0;
+}
+
+.sidebar:has(input[type="checkbox"]:checked) picture{
+    width: fit-content;
+    margin-left: .75rem;
+}
+
+.sidebar:has(input[type="checkbox"]:checked) :is(.sidebar__item a, .profile-option){
+    display: none;
+}
+
+.icon-outlined:hover{
+    transform: scale(1.3);
+}
+
+.open-button:hover{
+    transform: none;
+}
+
+body:has(.colors-change:hover) :is(.sidebar),
+body:has(.colors-change:hover) :is(.sidebar__item){
+    --sidebar-color: color-mix(in srgb, #f62 70%, #fff);
+    --bg-color: #fff;
+}
+
+body:has(.colors-change:hover) :is(.sidebar__item:hover){
+    background-color: var(--sidebar-color);
+    color: var(--bg-color);
+}
+
+body:has(.colors-change:hover) :is(.sidebar__item:hover::before){
+    z-index: -40;
     }
-    100% {
-        transform: translateX(0);
-    }
+
+body:has(.colors-change:hover) :is(.sidebar__img){
+    display: none;
 }
 
-.sidebar.show {
-    animation: slide-in 0.5s forwards;
+body:has(.colors-change:hover) :is(.img-white){
+    display: inline-block;
 }
-
-/* Add more styles as needed for animations and dark mode functionality */
