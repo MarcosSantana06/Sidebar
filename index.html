@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SideBar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <form class="sidebar__form">
+            <input type="checkbox" id="open-menu">
+            <label for="open-menu" class="icon-outlined">close</label>
+            <label for="open-menu" class="icon-outlined open-button">double_arrow</label>
+        </form>
+        <picture class="sidebar__picture">
+            <img src="images/ada13.png" class="sidebar__img">
+            <img src="images/ada13-white.png" class="sidebar__img img-white">
+        </picture>
+        <nav class="sidebar__nav">
+            <ul>
+                <li class="sidebar__item">
+                    <span class="icon-outlined" title="View Notifications">Notifications</span>
+                    <a href="#">Notifications</a>
+                </li>
+                <li class="sidebar__item">
+                    <span class="icon-outlined" title="Open Messages">mail</span>
+                    <a href="#">Messages</a>
+                </li>
+                <li class="sidebar__item" title="Go to Cart">
+                    <span class="icon-outlined" >Shopping_cart</span>
+                    <a href="#">Cart</a>
+                </li>
+                <li class="sidebar__item">
+                    <span class="icon-outlined" title="Check Balance">Account_balance</span>
+                    <a href="#">Balance</a>
+                </li>
+                <li class="sidebar__item">
+                    <span class="icon-outlined" title="Manage Settings">Settings</span>
+                    <a href="#">Settings</a>
+                </li>
+                <li class="sidebar__item colors-change ">
+                        <span for="change-colors" class="icon-outlined" title="Change Colors">Bedtime</span>
+                        <a href="#">Dark Mode</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar__profile">
+            <ul>
+                <li class="sidebar__item profile-item">
+                    <img src="images/dalto.png" title="Go to Profile">
+                    <span class="profile-option">PROFILE</span>
+                </li>
+                <li class="sidebar__item">
+                    <span class="icon-outlined" title="Click to Logout">Logout</span>
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+</body>
+</html>
