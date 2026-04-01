@@ -21,7 +21,7 @@
     transition: transform 0.2s ease;
 }
 
-body{
+*{
     --bg-color: color-mix(in srgb, #f62 70%, #fff);
     --sidebar-color: #fff;
     --dark-color: #f62;
